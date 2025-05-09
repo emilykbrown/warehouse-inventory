@@ -86,14 +86,27 @@ CREATE TABLE inventory_location_tbl (
    FOREIGN KEY (location_id) REFERENCES location_tbl(location_id)
 );
 
+CREATE TABLE address_tbl (
+  address_id VARCHAR(40) PRIMARY KEY,
+  street_line_one VARCHAR(255) NOT NULL,
+  street_line_two VARCHAR(255) NULL,
+  street_line_three VARCHAR(255) NULL,
+  city VARCHAR(100) NOT NULL,
+  state VARCHAR(100) NOT NULL,
+  postal_code VARCHAR(20) NOT NULL,
+  country VARCHAR(100) NOT NULL,
+  address_type ENUM('billing', 'shipping', 'physical') NOT NULL
+);
+
 CREATE TABLE supplier_tbl (
     supplier_id VARCHAR(40) PRIMARY KEY,
     supplier_name VARCHAR(100) NOT NULL,
     supplier_contact_name VARCHAR(100),
     supplier_phone_number VARCHAR(20),
-    supplier_email VARCHAR(100),
-    supplier_address TEXT,
-    supplier_website TEXT
+    supplier_email VARCHAR(255),
+    supplier_address VARCHAR(40),
+    supplier_website VARCHAR(255),
+    FOREIGN KEY (supplier_address) REFERENCES address_tbl(address_id)
 );
 
 CREATE TABLE inventory_supplier_tbl (
@@ -140,8 +153,11 @@ CREATE TABLE restaurant_tbl (
     restaurant_contact_name VARCHAR(255),
     restaurant_phone_number VARCHAR(20),
     restaurant_email VARCHAR(255),
-    restaurant_billing_address TEXT,
-    restaurant_shipping_address TEXT
+    restaurant_website VARCHAR(255),
+    restaurant_billing_address VARCHAR(40),
+    restaurant_shipping_address VARCHAR(40),
+    FOREIGN KEY (restaurant_billing_address) REFERENCES address_tbl(address_id),
+    FOREIGN KEY (restaurant_shipping_address) REFERENCES address_tbl(address_id)
 );
 
 CREATE TABLE restaurant_order_tbl (
@@ -164,7 +180,6 @@ CREATE TABLE restaurant_order_item_tbl (
     FOREIGN KEY (restaurant_order_id) REFERENCES restaurant_order_tbl(restaurant_order_id),
     FOREIGN KEY (inventory_id) REFERENCES inventory_tbl(inventory_id)
 );
-
 
 CREATE TABLE invoice_tbl (
     invoice_id VARCHAR(40) PRIMARY KEY,
