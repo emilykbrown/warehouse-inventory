@@ -47,6 +47,7 @@ CREATE TABLE inventory_tbl (
     inventory_unit VARCHAR (20),
     unit_price DECIMAL (10,2),
     min_stocked_level INT NOT NULL,
+    inventory_img_path VARCHAR(255),
     FOREIGN KEY (inventory_category_id) REFERENCES inventory_category_tbl(inventory_category_id)
 );
 

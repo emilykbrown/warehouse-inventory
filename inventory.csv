@@ -1,0 +1,51 @@
+inventory_sku,inventory_name,inventory_desc,inventory_unit,unit_price,min_stocked_level
+SKU-0001,Chicken Breast,Fresh boneless skinless chicken breast,kg,7.5,10
+SKU-0002,Ground Beef,Fresh ground beef 80/20,kg,8.0,10
+SKU-0003,Salmon Fillet,Fresh Atlantic salmon fillet,kg,15.0,5
+SKU-0004,Pork Belly,"Fresh pork belly, skinless",kg,9.0,5
+SKU-0005,Olive Oil,Extra virgin olive oil,liter,12.0,5
+SKU-0006,Canola Oil,Refined canola oil,liter,4.5,10
+SKU-0007,All-Purpose Flour,Premium all-purpose wheat flour,kg,1.8,20
+SKU-0008,Granulated Sugar,Fine white granulated sugar,kg,2.2,20
+SKU-0009,Brown Sugar,Light brown sugar,kg,2.5,10
+SKU-0010,Sea Salt,Coarse sea salt,kg,1.5,5
+SKU-0011,Black Pepper,Ground black pepper,kg,18.0,2
+SKU-0012,Butter (Salted),Salted dairy butter,kg,6.5,10
+SKU-0013,Heavy Cream,Heavy whipping cream 35%,liter,5.5,5
+SKU-0014,Milk (Whole),Whole cow’s milk,liter,1.2,10
+SKU-0015,Eggs (Large),Fresh large eggs,dozen,3.0,5
+SKU-0016,Mozzarella Cheese,Low moisture mozzarella cheese block,kg,9.5,5
+SKU-0017,Parmesan Cheese,Grated parmesan cheese,kg,14.0,2
+SKU-0018,Cheddar Cheese,Sharp cheddar cheese block,kg,10.0,5
+SKU-0019,Tomatoes (Roma),Fresh Roma tomatoes,kg,3.5,10
+SKU-0020,Lettuce (Romaine),Fresh Romaine lettuce heads,each,1.8,15
+SKU-0021,Spinach (Fresh),Fresh baby spinach,kg,4.0,5
+SKU-0022,Onions (Yellow),Yellow onions,kg,2.0,10
+SKU-0023,Garlic (Fresh),Whole garlic bulbs,kg,5.0,3
+SKU-0024,Basil (Fresh),Fresh basil bunch,bunch,2.5,2
+SKU-0025,Parsley (Fresh),Fresh flat-leaf parsley,bunch,1.5,2
+SKU-0026,Ketchup,Tomato ketchup,liter,3.0,5
+SKU-0027,Mayonnaise,Real egg mayonnaise,liter,4.5,5
+SKU-0028,Soy Sauce,Naturally brewed soy sauce,liter,6.0,3
+SKU-0029,Balsamic Vinegar,Aged balsamic vinegar,liter,10.0,2
+SKU-0030,Red Wine Vinegar,Red wine vinegar,liter,5.0,2
+SKU-0031,Pasta (Spaghetti),Dried spaghetti pasta,kg,2.2,10
+SKU-0032,Rice (Basmati),Long grain basmati rice,kg,3.0,15
+SKU-0033,Chili Flakes,Crushed red chili flakes,kg,12.0,1
+SKU-0034,Honey,Raw wildflower honey,liter,9.0,2
+SKU-0035,Vanilla Extract,Pure vanilla extract,liter,25.0,1
+SKU-0036,Baking Powder,Double acting baking powder,kg,4.0,2
+SKU-0037,Yeast (Active Dry),Active dry baker’s yeast,kg,15.0,1
+SKU-0038,Cornstarch,Fine cornstarch powder,kg,3.0,3
+SKU-0039,Lemon Juice,Bottled lemon juice,liter,4.5,3
+SKU-0040,Beef Stock (Premade),Prepared beef stock concentrate,liter,6.0,5
+SKU-0041,Chicken Stock (Premade),Prepared chicken stock concentrate,liter,5.5,5
+SKU-0042,Maple Syrup,Pure maple syrup,liter,15.0,2
+SKU-0043,Canned Tomatoes,Whole peeled canned tomatoes,kg,3.8,10
+SKU-0044,Canned Black Beans,Canned black beans,kg,2.5,8
+SKU-0045,Canned Chickpeas,Canned garbanzo beans,kg,2.6,8
+SKU-0046,Tuna (Canned),Canned tuna in oil,kg,8.0,5
+SKU-0047,Frozen French Fries,Pre-cut frozen French fries,kg,3.5,10
+SKU-0048,Frozen Peas,Frozen green peas,kg,3.0,5
+SKU-0049,Frozen Mixed Berries,Frozen assorted berries,kg,6.5,3
+SKU-0050,Chocolate Chips,Semi-sweet chocolate chips,kg,7.0,4
