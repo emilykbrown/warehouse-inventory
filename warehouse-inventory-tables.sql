@@ -54,6 +54,7 @@ CREATE TABLE inventory_tbl (
 CREATE TABLE inventory_stock_tbl (
 	inventory_stock_id VARCHAR(40) PRIMARY KEY,
 	inventory_id VARCHAR(40) NOT NULL,
+    inventory_stocked_qty INT NOT NULL,
    FOREIGN KEY (inventory_id) REFERENCES inventory_tbl(inventory_id)
 );
 
