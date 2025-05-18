@@ -8,6 +8,11 @@
     ?>
 </head>
 <body>
+    <?php
+
+    include ("../view/components/navbar.php");
+
+    ?>
     test
 
     <?php

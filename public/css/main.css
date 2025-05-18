@@ -1,0 +1,12 @@
+.error {
+    color: hsl(0, 100%, 50%);
+}
+  
+.card-bg {
+    background-color: hsl(194, 100%, 89%);
+}
+  
+.login-card {
+    top: 50%;
+    left: 50%;
+}
