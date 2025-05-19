@@ -1,20 +1,24 @@
 <?php
-require_once 'config/db.php';
 
 class AuthController {
-    public function login($username, $password) {
-        global $con;
+    private $con;
 
-        $query = "SELECT user_id, username, password FROM users WHERE username = :username";
-        $stmt = $con->prepare($query);
+    public function __construct($con) {
+        $this->con = $con;
+    }
+
+    public function login($username, $password) {
+        $query = "SELECT user_id, username, user_first_name, user_last_name, user_email, password_hash FROM user_tbl WHERE username = :username";
+        $stmt = $this->con->prepare($query);
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($password, $user['password'])) {
+        // Fix typo: 'passwors' → 'password_hash'
+        if ($user && password_verify($password, $user['password_hash'])) {
             $user_id = $user['user_id'];
 
-            $roleStmt = $con->prepare("SELECT role_id FROM user_roles WHERE user_id = :user_id");
+            $roleStmt = $this->con->prepare("SELECT role_name FROM user_roles_view WHERE user_id = :user_id"); 
             $roleStmt->bindParam(':user_id', $user_id);
             $roleStmt->execute();
             $role = $roleStmt->fetch(PDO::FETCH_ASSOC);
@@ -23,14 +27,11 @@ class AuthController {
                 session_start();
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $user['username'];
-                $_SESSION['role_id'] = $role['role_id'];
+                $_SESSION['role'] = $role['role_name'];
 
-                // Redirect based on role
-                $this->redirectByRole($role['role_id']);
+                $this->redirectByRole($role['role_name']);
                 return;
             }
-        } else {
-
         }
 
         // Login failed
@@ -38,24 +39,19 @@ class AuthController {
         exit();
     }
 
-    public function logout() {
-        session_start();
-        unset($_SESSION['username']);
-        session_destroy();
-        header("Location: index.php");
-        exit;
-    }
-
-    private function redirectByRole($role_id) {
+    private function redirectByRole($role) {
         $role_pages = [
-            "employee"=> "employee-dashboard.php",
+            'inventory_manager', 'warehouse_staff', 'customer_support' => "employee-dashboard.php",
+            'customer' => 'index.php'
         ];
 
-        if (array_key_exists($role_id, $role_pages)) {
-            header("Location: " . $role_pages[$role_id]);
+
+        if (array_key_exists($role, $role_pages)) {
+            header("Location: " . $role_pages[$role]);
         } else {
             header("Location: access-restricted.php");
         }
         exit();
     }
 }
+?>

@@ -1,3 +1,7 @@
+<?php
+$error = isset($_GET['login_error']) ? 'Invalid username or password.' : '';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +14,7 @@
     <div class="position-absolute top-50 start-50 translate-middle">
         <div class="d-flex justify-content-center align-items-center bg-light">
             <div class="card p-3 shadow">
-                <form action="" method="POST">
+                <form action="../routes.php" method="POST">
                     <div class="mb-3 mt-3">
                         <label for="text" class="form-label">Username</label>
                         <input type="text" class="form-control" id="username" placeholder="Username"
@@ -21,7 +25,8 @@
                         <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-dark" name="login">Login</button>
+                        <button type="submit" class="btn btn-primary btn-dark" name="login_btn">Login</button>
+                        <p style="color:red;"><?php echo $error; ?></p>
                     </div>
                 </form>
             </div>
