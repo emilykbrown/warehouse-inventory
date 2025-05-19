@@ -7,7 +7,7 @@ $password = "";
 
 try {
 	$con = new PDO("mysql:host={$host};dbname={$dbName}",$userName,$password);
-    echo "Connection good";
+    // echo "Connection good";
 }
 
 catch(PDOException $e) {

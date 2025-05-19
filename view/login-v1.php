@@ -1,15 +1,11 @@
 <?php
+// $error = isset($_GET['login_error']) ? 'Invalid username or password.' : '';
 
+include "../config/database.php";
+include "../config/variables.php";
+include "../controller/auth-controller.php";
 
-require_once '../config/database.php';
-require_once '../config/variables.php';
-require_once '../controller/auth-controller.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_btn'])) {
-    
-    $auth = new AuthController($con);
-    $auth->login($_POST['username'], $_POST['password']);
-}
+ 
 ?>
 
 <!DOCTYPE html>

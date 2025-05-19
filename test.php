@@ -1,19 +1,11 @@
-<!-- HTML --> 
-<form method="post">
-    <button type="submit" name="my_button">Click Me</button>
-</form>
-
-
 <?php
 
-// PHP
-if (isset($_POST['my_button'])) {
-    myFunction();
-}
+$password = 'HelloWorld123!';
+$hash = password_hash($password, PASSWORD_DEFAULT);
+echo $hash;
 
-function myFunction() {
-    echo "Button clicked!";
-}
+// Then store $hash in the database
+
 
 
 ?>
