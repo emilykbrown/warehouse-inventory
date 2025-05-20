@@ -9,6 +9,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_btn'])) {
     
     $auth = new AuthController($con);
     $auth->login($_POST['username'], $_POST['password']);
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    if (empty($username) || empty($password)) {
+        $login_error = "Please enter both username and password.";
+    } else {
+        $auth = new AuthController($con);
+        if (!$auth->login($username, $password)) {
+            $login_error = "Invalid username or password.";
+        }
+    }
+}
 }
 ?>
 
@@ -36,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_btn'])) {
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-dark" name="login_btn">Login</button>
-                        <p style="color:red;"><?php echo $login_error; ?></p>
+                        <p class="error" style="color:red;"><?php echo $login_error; ?></p>
                     </div>
-                </form>
+                
             </div>
         </div>
     </div>

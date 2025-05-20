@@ -32,11 +32,7 @@ class AuthController {
                 $this->redirectByRole($role['user_role']);
                 return;
             }
-        }
-
-        // Fail
-        // header("Location: login.php?error=1");
-        // exit();
+        } 
     }
 
     private function redirectByRole($role) {
