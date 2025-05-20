@@ -8,13 +8,14 @@
     ?>
 </head>
 <body>
+    <div class="container">
     <?php
 
     include ("../view/components/navbar.php");
 
     ?>
     test
-
+    </div>
     <?php
 
     include ("../view/components/js-scripts.php");

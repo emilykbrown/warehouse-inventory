@@ -22,7 +22,7 @@
                     <span class="navbar-text me-2">Hello, <?= htmlspecialchars($_SESSION['username']) ?></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../logout.php">Logout</a>
+                    <a class="nav-link" href="logout.php">Logout</a>
                 </li>
             <?php else: ?>
                 <li class="nav-item">
