@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <title>Warehouse Inventory</title>
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="../public/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../public/css/bootstrap.min.css">
 <!-- Data tables CSS -->
 <link rel="stylesheet" href="../public/css/datatables.min.css">
 <!-- Custom CSS -->

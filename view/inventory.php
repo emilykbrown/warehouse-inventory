@@ -38,7 +38,7 @@ include "../config/database.php";
             </thead>
             <tbody>
                 <?php
-                $inventory_tbl = $con->prepare("SELECT inventory_name, inventory_upc, inventory_category, unit_price, qty_stocked, inventory_img_path FROM inventory_tbl");
+                $inventory_tbl = $con->prepare("SELECT inventory_name, inventory_upc, inventory_category, unit_price, inventory_img_path FROM inventory_tbl");
                 $inventory_tbl->execute();
                 while ($row = $inventory_tbl->fetch(PDO::FETCH_ASSOC)) {
                     echo '<tr>';
