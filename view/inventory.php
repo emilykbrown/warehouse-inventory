@@ -1,6 +1,8 @@
 <?php
+
 include "../config/database.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +38,7 @@ include "../config/database.php";
                     echo '<td>' . htmlspecialchars($row['unit_price']) . '</td>';
                     echo '<td><img src="' . htmlspecialchars($row['inventory_img_path']) . '" width="75" height="110"></td>';
                     echo '<td>';
+                    echo "<a href='inventory/edit.php?id=" . urlencode($row['inventory_id']) . "' name='edit-inventory' class='btn btn-warning btn-sm'><img src='img/pen-solid.svg' width='16' height='16' style='filter: invert(1);' alt='Edit icon'></a>&nbsp;&nbsp;";
                     echo "<button onclick='confirmInventoryDelete(\"" . $row['inventory_id'] . "\")' class='btn btn-sm btn-danger deleteBtn'>";
                     echo "<img src='img/x-solid.svg' width='16' height='16' style='filter: invert(1);' alt='Delete icon'>";
                     echo "</button>";

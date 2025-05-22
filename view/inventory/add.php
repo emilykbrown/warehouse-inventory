@@ -2,7 +2,7 @@
 
 include "../../config/variables.php";
 
-//include "../../controller/inventory-controller.php";
+include "../../controller/inventory-controller.php";
 
 
 ?>
@@ -14,6 +14,11 @@ include "../../config/variables.php";
     include "../../view/components/css-links.php";
     
     ?>
+<style>
+    .error {
+        color: red;
+    }
+</style>
 </head>
 <body>
     <div class="container">
@@ -28,7 +33,7 @@ include "../../config/variables.php";
     <div class="container mt-3 mb-3 d-flex justify-content-center">
         <div class="card">
             <div class="card-body">
-                <form action="../../controller/inventory-controller.php" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="mb-3 mt-3">
                         <label for="inventory_name">Product Name</label>
                         <input type="text" class="form-control" name="inventory_name" id="inventory_name"

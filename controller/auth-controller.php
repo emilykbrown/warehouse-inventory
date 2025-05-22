@@ -8,7 +8,7 @@ class AuthController {
     }
 
     public function login($username, $password) {
-        $query = "SELECT user_id, username, user_first_name, user_last_name, user_email, password_hash, user_role
+        $query = "SELECT user_id, username, user_email, password_hash, user_role
                   FROM user_tbl WHERE username = :username";
         $stmt = $this->con->prepare($query);
         $stmt->bindParam(':username', $username);
