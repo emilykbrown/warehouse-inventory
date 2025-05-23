@@ -1,5 +1,8 @@
 <?php
 
+require_once '../../rbac.php';
+checkAccess(['inventory_manager']);        
+
 include "../../config/variables.php";
 
 include "../../controller/inventory-controller.php";

@@ -1,5 +1,7 @@
 <?php
-session_start();
+require_once '../../rbac.php';
+checkAccess(['inventory_manager']);
+
 include "../../config/database.php";
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {

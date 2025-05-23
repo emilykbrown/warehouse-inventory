@@ -1,7 +1,10 @@
 <?php
-session_start();
+require_once '../../rbac.php';
+checkAccess(['inventory_manager']);
+
 include "../../config/database.php";
 include "../../controller/edit-product.php";
+
 
 // if (!isset($_SESSION['user_role']) || !in_array($_SESSION['user_role'], ['admin', 'editor'])) {
 //     header("Location: view-product.php?id=" . urlencode($_GET['id']));
