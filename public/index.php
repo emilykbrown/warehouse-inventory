@@ -40,7 +40,7 @@ $stmt->execute();
                         <p class="fw-bold">$<?= htmlspecialchars($row['unit_price']) ?></p>
                     </div>
                     <div class="card-footer text-center d-flex justify-content-around">
-                        tesr
+                        Add to cart
                     </div>
                 </div>
             </div>
