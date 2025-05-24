@@ -2,7 +2,7 @@
 
 ## Project Over
 
-I built a system to keep track of the inventory of a warehouse that carries supplies to restraunts. I am planning on expanding this into a bigger project for my portfolio.
+I built a system to keep track of the inventory of a warehouse that carries supplies to restaurants. I am planning on expanding this into a bigger project for my portfolio.
 
 ## Tech Stack
 

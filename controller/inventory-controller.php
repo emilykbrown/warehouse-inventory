@@ -46,45 +46,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-product'])) {
     }
     
     if (isset($_FILES['inventory_img']) && $_FILES['inventory_img']['error'] !== UPLOAD_ERR_NO_FILE) {
-    $img_file = $_FILES['inventory_img']['name'];
-    $ext = pathinfo($img_file, PATHINFO_EXTENSION);
-
-    $img_file = $_FILES['inventory_img']['name'];
-    $ext = pathinfo($img_file, PATHINFO_EXTENSION);
-
-
-    // Convert product name to lowercase, replace spaces with -, remove unsafe characters
-    $inventory_name_slug = strtolower(trim($inventory_name));
-    $inventory_name_slug = preg_replace('/[^a-z0-9\s\-]/', '', $inventory_name_slug); // remove special chars
-    $inventory_name_slug = preg_replace('/[\s]+/', '-', $inventory_name_slug);       // replace spaces with -
-
-    $file_name = $inventory_name_slug . '.' . $ext;
+        $img_file = $_FILES['inventory_img']['name'];
+        $ext = pathinfo($img_file, PATHINFO_EXTENSION);
     
-    $tmp_name = $_FILES['inventory_img']['tmp_name'];
-    $file_size = $_FILES['inventory_img']['size'];
-
-    // Upload path
-    $upload_dir = 'upload/';
-    $server_path = '../view/' . $upload_dir . $file_name;  // used to move file
-    $db_path = $upload_dir . $file_name;                   // stored in DB
-   
-    // Validate file
-    if (!preg_match($img_regex, $img_file)) {
-        $inventory_img_error = "Unsupported file type (only JPG, PNG, GIF allowed)";
-    } elseif ($file_size > 2 * 1024 * 1024) { // 2MB
-        $inventory_img_error = "Image too big (max 2MB)";
-    } else {
-        if (move_uploaded_file($tmp_name, $server_path)) {
-            // Success – set value for DB insert
-            $inventory_img_path = $db_path;
-            $valid_check += 1;
+        // Sanitize and slugify product name for filename
+        $inventory_name_slug = strtolower(trim($inventory_name));
+        $inventory_name_slug = preg_replace('/[^a-z0-9\s\-]/', '', $inventory_name_slug); // remove special chars
+        $inventory_name_slug = preg_replace('/[\s]+/', '-', $inventory_name_slug);       // replace spaces with -
+    
+        $file_name = $inventory_name_slug . '.' . $ext;
+    
+        $tmp_name = $_FILES['inventory_img']['tmp_name'];
+        $file_size = $_FILES['inventory_img']['size'];
+    
+        // Relative path for DB
+        $db_path = 'upload/' . $file_name;
+    
+        // Absolute path for moving file
+        $upload_dir = __DIR__ . '/../view/upload/';
+        $server_path = $upload_dir . $file_name;
+    
+        // Validate image
+        if (!preg_match($img_regex, $img_file)) {
+            $inventory_img_error = "Unsupported file type (only JPG, PNG, GIF allowed)";
+        } elseif ($file_size > 2 * 1024 * 1024) {
+            $inventory_img_error = "Image too big (max 2MB)";
         } else {
-            $inventory_img_error = "Failed to upload image";
+            if (move_uploaded_file($tmp_name, $server_path)) {
+                $inventory_img_path = $db_path; // Save relative path to DB
+                $valid_check += 1;
+            } else {
+                $inventory_img_error = "Failed to upload image";
+            }
         }
+    } else {
+        $inventory_img_error = "Please select an image to upload";
     }
-} else {
-    $inventory_img_error = "Please select an image to upload";
-}
+    
 
 
     if ($valid_check == 5) {
@@ -105,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-product'])) {
         session_start();
 
         if ($stmt->execute()) {
-            header("Location: ../view/inventory.php");
+            header("Location: ../inventory.php");
             $_SESSION['success_message'] = "Product added successfully.";
             exit;
         } else {
